@@ -9,7 +9,7 @@ The original simulator — the abstract, living Possibility Field — is still h
 ## The three surfaces
 
 | Surface | What it does |
-|---|---|
+|---|---
 | **Home** (light) | The day-trip promise, a strip of real destination photos, and the two doors: **Plan my day** and **Explore the field**. |
 | **Planner → Results → Trip detail** (light) | Pick an origin, a budget (₹200–₹10,000), a time window (2–48 h), and interests — food, heritage, nightlife, adventure, shopping, nature, movies, in priority order — and get ranked round-trip plans: route summary, full cost breakdown, and the interests each plan matches. Selecting a plan reveals the minute-by-minute itinerary, the route map, and the destination's photos and famous spots. |
 | **Explore** (dark) | Today's Possibility Field exactly as shipped: the bloom/thin/grey field, story mode, time-lapse, unlock probe, scenarios, and share links. `#s=` share links restore Explore from any surface. |
