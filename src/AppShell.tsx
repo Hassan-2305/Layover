@@ -89,5 +89,22 @@ export default function AppShell() {
     )
   }
 
-  return <Home onPlanDay={() => setSurface('planner')} onExplore={() => setSurface('explore')} />
+  return (
+    <Home
+      onPlanDay={() => setSurface('planner')}
+      onExplore={() => setSurface('explore')}
+      onQuickPlan={(originId, budgetINR, availableHours) => {
+        dispatchPlanner({ type: 'setOrigin', id: originId })
+        dispatchPlanner({ type: 'setBudget', inr: budgetINR })
+        dispatchPlanner({ type: 'setHours', hours: availableHours })
+        dispatchPlanner({ type: 'submit' })
+        setPlannerView('results')
+        setSurface('planner')
+      }}
+      onSelectDestination={(destId) => {
+        sim.dispatch({ type: 'select', id: destId })
+        setSurface('explore')
+      }}
+    />
+  )
 }

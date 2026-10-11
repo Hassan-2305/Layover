@@ -28,10 +28,10 @@ export function Header({ onReset, onStory, onTimelapse, scenarioPanel }: HeaderP
     <header className="app-header">
       <div className="brand">
         <h1>EVERYWHERE</h1>
-        <p>YOUR POSSIBLE WORLD</p>
+        <p>DAY TRIP & LAYOVER PLANNER</p>
       </div>
       <div className="header-right">
-        <span className="tagline">Same you. Different timelines.</span>
+        <span className="tagline">South India Transit & Day-Trip Intelligence</span>
         <button type="button" className="icon-btn" data-testid="tell-the-story" onClick={onStory} aria-label="Tell the story" title="Tell the story">
           <BookIcon />
         </button>

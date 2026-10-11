@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react'
 import { DEMO_DATA } from './data'
-import { FieldCanvas } from './components/FieldCanvas'
+import { GeoRouteMap } from './components/GeoRouteMap'
 import { Header } from './components/Header'
 import { OriginCard, BudgetCard, TimeCard, LiveModeCard } from './components/ControlsCards'
 import { StatsCard } from './components/StatsCard'
@@ -94,11 +94,11 @@ export default function App({ sim }: AppProps) {
           <LiveModeCard playing={clock.playing} onToggle={() => dispatch({ type: 'togglePlay' })} />
           <StatsCard summary={summary} criticalCount={criticalConnIds.size} />
         </aside>
-        <main className="field-area" aria-label="Possibility field">
+        <main className="field-area" aria-label="Route map and destinations">
           {probePreview && (
             <PreviewBanner preview={probePreview} onReset={() => dispatch({ type: 'clearProbePreview' })} />
           )}
-          <FieldCanvas
+          <GeoRouteMap
             results={results}
             originId={constraints.originId}
             originName={originName}
@@ -110,7 +110,6 @@ export default function App({ sim }: AppProps) {
             selectedId={selectedId}
             onSelect={(id) => dispatch({ type: 'select', id })}
           />
-          <p className="field-caption">Abstract reachability field — not a geographic map.</p>
         </main>
         <aside className="rail rail-right">
           <DestinationsRail
