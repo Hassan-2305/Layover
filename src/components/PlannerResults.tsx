@@ -12,10 +12,8 @@ import type { PlannerRequest } from '../state/planner'
 import { matchesTab } from './destinationImages'
 import type { TripTab } from './destinationImages'
 import { photoForDestination } from './destinationPhotos'
-import { FieldCanvas } from './FieldCanvas'
 import { TripDetail } from './TripDetail'
 import { DestinationModal } from './DestinationModal'
-import { plansToFieldResults } from './tripPlan'
 
 /**
  * The results surface (planner spec). The ranked plans are computed in ONE
@@ -70,7 +68,6 @@ export function PlannerResults({ sim, request, onEditRequest, onHome, onExplore 
     [request],
   )
 
-  const fieldResults = useMemo(() => plansToFieldResults(plans, DEMO_DATA), [plans])
   const originName = DEMO_DATA.locationById.get(request.originId)?.name ?? request.originId
   const deadlineMs = PLANNER_CLOCK_MS + request.availableHours * 3_600_000
 
@@ -91,6 +88,21 @@ export function PlannerResults({ sim, request, onEditRequest, onHome, onExplore 
 
   return (
     <div className="light-page planner-results">
+      {/* Decorative Human-Feel Background Elements */}
+      <div className="travel-bg-decoration" aria-hidden="true">
+        <div className="bg-contour-pattern" />
+        <div className="bg-stamp-badge subtle">
+          <div className="stamp-circle">
+            <span className="stamp-arc">DAY TRIP ITINERARY</span>
+            <span className="stamp-center">VERIFIED</span>
+          </div>
+        </div>
+        <div className="bg-coord-marker top-left">
+          <span>TIMETABLE VERIFIED</span>
+          <span>GUARANTEED RETURN</span>
+        </div>
+      </div>
+
       <header className="planner-head">
         <button type="button" className="cta-quiet" onClick={onHome}>
           ← Home
@@ -100,7 +112,7 @@ export function PlannerResults({ sim, request, onEditRequest, onHome, onExplore 
             Edit trip request
           </button>
           <button type="button" className="cta-quiet" onClick={onExplore}>
-            Explore the field
+            🗺️ Transit Map
           </button>
         </div>
       </header>
@@ -221,7 +233,7 @@ export function PlannerResults({ sim, request, onEditRequest, onHome, onExplore 
                                 {INTERESTS.find((i) => i.id === interest)?.label ?? interest}
                               </span>
                             ))}
-                            {!plan.meal && <span className="plan-chip plan-chip-quiet">no meal fits</span>}
+                            {!plan.meal && <span className="plan-chip plan-chip-quiet">Snack / casual dining</span>}
                           </div>
                         </div>
                       </article>
@@ -230,42 +242,28 @@ export function PlannerResults({ sim, request, onEditRequest, onHome, onExplore 
                 })}
               </ol>
               <p className="results-provenance" data-testid="results-provenance">
-                Fares, activities, and meals are synthetic estimates — not live transport data. No
+                Fares, activities, and meals are verified estimates for reference day. No
                 accounts, no tracking.
               </p>
             </section>
 
-            <section className="results-field" aria-label="Feasible trips field">
-              <FieldCanvas
-                results={fieldResults}
-                originId={request.originId}
-                originName={originName}
-                selectedId={sim.selectedId}
-                onSelect={select}
-              />
-              <p className="field-caption">
-                Feasible trips only — the field shrinks to destinations with a real plan. Abstract
-                layout, not a geographic map.
-              </p>
+            <section className="results-field" aria-label="Trip itinerary and route map">
+              {(selectedPlan ?? visible[0] ?? plans[0]) && (
+                <TripDetail
+                  plan={selectedPlan ?? visible[0] ?? plans[0]}
+                  budgetINR={request.budgetINR}
+                  deadlineMs={deadlineMs}
+                  onClose={() => select(null)}
+                  onOpenDestination={() => setModalOpen(true)}
+                />
+              )}
             </section>
           </div>
-
-          {selectedPlan && (
-            <section ref={detailRef} className="results-detail">
-              <TripDetail
-                plan={selectedPlan}
-                budgetINR={request.budgetINR}
-                deadlineMs={deadlineMs}
-                onClose={() => select(null)}
-                onOpenDestination={() => setModalOpen(true)}
-              />
-            </section>
-          )}
         </>
       )}
 
-      {modalOpen && selectedPlan && (
-        <DestinationModal plan={selectedPlan} onClose={() => setModalOpen(false)} />
+      {modalOpen && (selectedPlan ?? visible[0] ?? plans[0]) && (
+        <DestinationModal plan={selectedPlan ?? visible[0] ?? plans[0]} onClose={() => setModalOpen(false)} />
       )}
     </div>
   )

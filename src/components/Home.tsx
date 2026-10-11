@@ -70,6 +70,27 @@ export function Home({ onPlanDay, onExplore, onQuickPlan, onSelectDestination }:
 
   return (
     <div className="light-page home">
+      {/* Decorative Human-Feel Background Elements */}
+      <div className="travel-bg-decoration" aria-hidden="true">
+        <div className="bg-contour-pattern" />
+        <div className="bg-stamp-badge">
+          <div className="stamp-circle">
+            <span className="stamp-arc">SOUTH INDIA TRANSIT CORRIDOR</span>
+            <span className="stamp-center">EST • 2026</span>
+          </div>
+        </div>
+        <div className="bg-coord-marker top-left">
+          <span>LAT 11°15′N</span>
+          <span>LON 75°46′E</span>
+          <span className="coord-label">MALABAR SECTOR</span>
+        </div>
+        <div className="bg-coord-marker bottom-right">
+          <span>ALT 1m — 2,240m</span>
+          <span>NILGIRIS & GHATS</span>
+          <span className="coord-label">EXPEDITION READY</span>
+        </div>
+      </div>
+
       {/* Top Navigation */}
       <header className="home-top-nav">
         <div className="home-brand">
@@ -81,7 +102,7 @@ export function Home({ onPlanDay, onExplore, onQuickPlan, onSelectDestination }:
         </div>
         <nav className="home-nav-links">
           <button type="button" className="nav-link-btn" onClick={onExplore}>
-            🗺️ Live Transit Map
+            🗺️ Route & Transit Map
           </button>
           <button type="button" className="cta-loud home-nav-cta" onClick={onPlanDay}>
             Plan My Day →
@@ -93,7 +114,7 @@ export function Home({ onPlanDay, onExplore, onQuickPlan, onSelectDestination }:
       <section className="home-hero-card">
         <div className="hero-content">
           <div className="hero-kicker">
-            <span className="kicker-pill">⚡ Multimodal Day Trips</span>
+            <span className="kicker-pill">🚆 Curated Day Trips</span>
             <span className="kicker-text">South India Layover & Weekend Planner</span>
           </div>
           <h1 className="home-title">Plan the whole day, not just the ride.</h1>
@@ -334,7 +355,7 @@ export function Home({ onPlanDay, onExplore, onQuickPlan, onSelectDestination }:
           </div>
           <div className="how-step-card">
             <div className="step-badge">2</div>
-            <h3>Live Timetable Engine</h3>
+            <h3>Transit Schedule Engine</h3>
             <p>
               Our engine checks every bus, train, and transfer connection, weeding out impossible or stranded trips.
             </p>

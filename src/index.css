@@ -2164,35 +2164,137 @@ input[type='range']::-moz-range-thumb {
    ============================================================ */
 
 body.light-ui {
-  --l-bg: #f5f6fb;
-  --l-bg-accent-1: rgba(91, 140, 255, 0.12);
-  --l-bg-accent-2: rgba(139, 123, 255, 0.09);
+  --l-bg: #fbf9f5;
+  --l-bg-accent-1: rgba(245, 158, 11, 0.08);
+  --l-bg-accent-2: rgba(56, 189, 248, 0.07);
+  --l-bg-accent-3: rgba(111, 95, 240, 0.06);
   --l-panel: #ffffff;
-  --l-panel-soft: rgba(255, 255, 255, 0.82);
-  --l-line: rgba(23, 32, 58, 0.12);
-  --l-line-strong: rgba(23, 32, 58, 0.22);
-  --l-text: #1a2440;
-  --l-muted: #576283;
-  --l-faint: #8b93ad;
-  --l-blue: #3459d6;
-  --l-blue-soft: rgba(52, 89, 214, 0.1);
-  --l-violet: #6f5ff0;
-  --l-shadow: 0 16px 40px rgba(23, 32, 58, 0.1);
+  --l-panel-soft: rgba(255, 255, 255, 0.88);
+  --l-line: rgba(30, 41, 69, 0.1);
+  --l-line-strong: rgba(30, 41, 69, 0.2);
+  --l-text: #162038;
+  --l-muted: #52607e;
+  --l-faint: #8590aa;
+  --l-blue: #2c54d8;
+  --l-blue-soft: rgba(44, 84, 216, 0.1);
+  --l-violet: #6352ea;
+  --l-shadow: 0 16px 40px rgba(23, 32, 58, 0.08);
 
   color: var(--l-text);
   overflow: auto;
-  background:
-    radial-gradient(1100px 640px at 78% -10%, var(--l-bg-accent-1), transparent 62%),
-    radial-gradient(900px 560px at 12% 110%, var(--l-bg-accent-2), transparent 60%),
-    var(--l-bg);
+  background-color: var(--l-bg);
+  background-image:
+    radial-gradient(1100px 640px at 85% -5%, var(--l-bg-accent-1), transparent 60%),
+    radial-gradient(900px 560px at 10% 25%, var(--l-bg-accent-2), transparent 55%),
+    radial-gradient(1200px 750px at 50% 105%, var(--l-bg-accent-3), transparent 60%),
+    url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%236366f1' fill-opacity='0.035' fill-rule='evenodd'%3E%3Ccircle cx='60' cy='60' r='1.5'/%3E%3Cpath d='M0 60h120M60 0v120' stroke='%23475569' stroke-width='0.5' stroke-opacity='0.03' stroke-dasharray='4 8'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 .light-page {
+  position: relative;
   min-height: 100vh;
   min-height: 100dvh;
   padding: clamp(20px, 4vw, 56px) clamp(18px, 5vw, 72px) 48px;
   color: var(--l-text);
   font-family: var(--font);
+  overflow-x: hidden;
+}
+
+/* creative travel background decorations */
+.travel-bg-decoration {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bg-contour-pattern {
+  position: absolute;
+  top: -80px;
+  right: -100px;
+  width: 600px;
+  height: 600px;
+  opacity: 0.45;
+  background-image: url("data:image/svg+xml,%3Csvg width='500' height='500' viewBox='0 0 500 500' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50,250 C120,180 200,280 280,210 C360,140 420,240 480,200 M30,300 C110,230 190,320 270,260 C350,200 410,290 470,250 M70,200 C130,130 210,220 290,160 C370,100 430,190 490,150 M10,350 C90,280 170,370 250,310 C330,250 400,340 460,300' fill='none' stroke='%232c54d8' stroke-width='0.75' stroke-opacity='0.12' stroke-dasharray='3 5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+}
+
+.bg-stamp-badge {
+  position: absolute;
+  top: 36px;
+  right: 48px;
+  opacity: 0.42;
+  transform: rotate(-10deg);
+  transition: opacity 0.2s ease;
+}
+
+.bg-stamp-badge.subtle {
+  opacity: 0.28;
+  top: 24px;
+  right: 28px;
+}
+
+.stamp-circle {
+  width: 110px;
+  height: 110px;
+  border: 1.5px dashed rgba(44, 84, 216, 0.45);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px;
+  box-shadow: inset 0 0 0 2px rgba(44, 84, 216, 0.15);
+}
+
+.stamp-arc {
+  font-size: 8px;
+  font-weight: 850;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--l-blue);
+  line-height: 1.25;
+}
+
+.stamp-center {
+  font-size: 9.5px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  color: var(--l-violet);
+  margin-top: 4px;
+}
+
+.bg-coord-marker {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  color: rgba(82, 96, 126, 0.45);
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.bg-coord-marker.top-left {
+  top: 24px;
+  left: 28px;
+}
+
+.bg-coord-marker.bottom-right {
+  bottom: 24px;
+  right: 32px;
+  text-align: right;
+}
+
+.coord-label {
+  font-size: 8.5px;
+  font-weight: 700;
+  color: rgba(44, 84, 216, 0.5);
+  letter-spacing: 0.16em;
 }
 
 /* ---- shared CTAs (light surfaces) ---- */
@@ -3554,21 +3656,20 @@ body.light-ui {
 }
 
 .results-field {
+  position: sticky;
+  top: 24px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
   min-width: 0;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 
-.results-field .field-area,
-.results-field canvas {
-  width: 100%;
-}
-.field-caption {
+.results-field .trip-detail {
   margin: 0;
-  font-size: 12px;
-  line-height: 1.55;
-  color: var(--l-faint);
+  box-shadow: 0 10px 32px rgba(23, 32, 58, 0.08);
 }
 
 .results-provenance {

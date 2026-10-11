@@ -37,13 +37,24 @@ export function PlannerForm({
 
   return (
     <div className="light-page planner">
+      {/* Decorative Human-Feel Background Elements */}
+      <div className="travel-bg-decoration" aria-hidden="true">
+        <div className="bg-contour-pattern" />
+        <div className="bg-stamp-badge subtle">
+          <div className="stamp-circle">
+            <span className="stamp-arc">PARAMETRIC ROUTE FINDER</span>
+            <span className="stamp-center">STATION BOUND</span>
+          </div>
+        </div>
+      </div>
+
       <header className="planner-head">
         <button type="button" className="cta-quiet" onClick={onHome}>
           ← Home
         </button>
         <div className="planner-head-actions">
           <button type="button" className="cta-quiet" onClick={onExplore}>
-            🗺️ Live Transit Map
+            🗺️ Route & Transit Map
           </button>
         </div>
       </header>

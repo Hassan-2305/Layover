@@ -131,16 +131,16 @@ interface LiveModeCardProps {
 /** Bound to the same clock as the timeline's play key — one state, two controls. */
 export function LiveModeCard({ playing, onToggle }: LiveModeCardProps) {
   return (
-    <section className="card live-card" aria-label="Live mode">
+    <section className="card live-card" aria-label="Timeline Autoplay">
       <div className="card-head">
         <span className="card-icon" aria-hidden="true">
           <ClockIcon />
         </span>
         <div className="live-copy">
           <span className="card-label" id="live-mode-label">
-            Live mode
+            Timeline Autoplay
           </span>
-          <span className="live-sub">Watch your options change as time moves.</span>
+          <span className="live-sub">Simulate departures as the day advances.</span>
         </div>
       </div>
       <button
