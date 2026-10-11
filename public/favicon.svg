@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="needleNorth" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="needleSouth" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#0284c7" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Outer Ring / Bezel -->
+  <circle cx="32" cy="32" r="30" fill="url(#bgGrad)" stroke="#38bdf8" stroke-width="2.5" stroke-opacity="0.85" filter="url(#glow)"/>
+  
+  <!-- Dial markers -->
+  <circle cx="32" cy="32" r="23" fill="none" stroke="#64748b" stroke-width="1" stroke-dasharray="2 4"/>
+  <circle cx="32" cy="8" r="1.5" fill="#38bdf8"/>
+  <circle cx="56" cy="32" r="1.5" fill="#94a3b8"/>
+  <circle cx="32" cy="56" r="1.5" fill="#f59e0b"/>
+  <circle cx="8" cy="32" r="1.5" fill="#94a3b8"/>
+
+  <!-- Compass Star Needle -->
+  <!-- North (Blue/Azure) -->
+  <polygon points="32,10 36,30 32,32 28,30" fill="url(#needleNorth)"/>
+  <polygon points="32,10 36,30 32,32" fill="#7dd3fc" fill-opacity="0.9"/>
+
+  <!-- South (Amber/Gold) -->
+  <polygon points="32,54 28,34 32,32 36,34" fill="url(#needleSouth)"/>
+  <polygon points="32,54 36,34 32,32" fill="#fde68a" fill-opacity="0.9"/>
+
+  <!-- East & West Accents -->
+  <polygon points="54,32 34,28 32,32 34,36" fill="#94a3b8" fill-opacity="0.5"/>
+  <polygon points="10,32 30,36 32,32 30,28" fill="#94a3b8" fill-opacity="0.5"/>
+
+  <!-- Central Pivot Pin -->
+  <circle cx="32" cy="32" r="4.5" fill="#0f172a" stroke="#f8fafc" stroke-width="1.8"/>
+  <circle cx="32" cy="32" r="2" fill="#38bdf8"/>
+</svg>
